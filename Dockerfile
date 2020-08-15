@@ -8,7 +8,7 @@ RUN apk add --no-cache curl \
   && mv gost_${VER}_linux_amd64 gost && chmod a+x gost/gost
 
 WORKDIR /gost
-EXPOSE ${TLS_PORT} $PORT
+EXPOSE ${TLS_PORT} $PORT $PROTOCOL $METHOD
 
 CMD exec /gost/gost -L=tls://:${TLS_PORT}/:$PORT -L=$PROTOCOL://$METHOD:$PASSWORD@:$PORT
 
